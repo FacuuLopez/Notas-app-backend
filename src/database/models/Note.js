@@ -18,6 +18,10 @@ Note.init(
       type: DataTypes.STRING(300),
       allowNull: false,
     },
+    date: {
+      type: DataTypes.DATE, 
+      allowNull: false,
+    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -28,7 +32,5 @@ Note.init(
     modelName: "Note",
   }
 );
-
-// Note.sync({ force: true });
 
 export default Note;

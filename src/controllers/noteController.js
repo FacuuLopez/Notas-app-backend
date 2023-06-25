@@ -1,4 +1,4 @@
-import Note from "../database/models/Note.js";
+import {Note} from "../database/models/index.js";
 
 export const noteController = {
   getAllNotesForUser: async (req, res) => {
