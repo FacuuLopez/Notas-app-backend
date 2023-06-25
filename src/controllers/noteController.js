@@ -15,11 +15,12 @@ export const noteController = {
   },
   createNewNote: async (req, res) => {
     try {
-      const { title, description, img } = req.body;
+      const { title, description, img, date } = req.body;
       const newNote = await Note.create({
         title,
         description,
         img,
+        date,
         userId: req.params.id,
       });
 

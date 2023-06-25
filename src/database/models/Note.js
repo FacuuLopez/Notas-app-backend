@@ -18,6 +18,10 @@ Note.init(
       type: DataTypes.STRING(300),
       allowNull: false,
     },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
