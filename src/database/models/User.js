@@ -1,23 +1,26 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes as DT, Model } from "sequelize";
+import bcrypt from "bcrypt";
 import connectionDb from "../config/connectionDb.js";
 
 class User extends Model {}
 
 User.init(
   {
-    username: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      unique: true,
-    },
     email: {
-      type: DataTypes.STRING(50),
+      type: DT.STRING(50),
       allowNull: false,
       unique: true,
     },
     password: {
-      type: DataTypes.STRING(30),
+      type: DT.STRING,
       allowNull: false,
+    },
+    salt: {
+      type: DT.STRING,
+    },
+    roleId: {
+      type: DT.INTEGER,
+      defaultValue: 2,
     },
   },
   {
@@ -26,6 +29,13 @@ User.init(
   }
 );
 
-// User.sync();
+User.beforeCreate(async (user) => {
+  const salt = await bcrypt.genSalt();
+  user.salt = salt;
+
+  const hash = await bcrypt.hash(user.password, salt);
+  user.password = hash;
+});
+
 
 export default User;

@@ -20,6 +20,7 @@ Note.init(
     },
     date: {
       type: DataTypes.DATEONLY,
+
       allowNull: false,
     },
     userId: {
@@ -32,7 +33,5 @@ Note.init(
     modelName: "Note",
   }
 );
-
-// Note.sync({ force: true });
 
 export default Note;

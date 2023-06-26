@@ -1,4 +1,4 @@
-import User from "../database/models/User.js";
+import {User} from "../database/models/index.js";
 
 export const userController = {
   getAllUsers: async (req, res) => {
